@@ -1,5 +1,5 @@
 import { IsEnum, IsInt, IsNotEmpty } from '@modules/class-validator/types';
-import { UserType } from '@src/common/code/user-type';
+import { UserType } from '@src/core/code/user-type';
 
 export class TokenUserDto {
     @IsInt()
