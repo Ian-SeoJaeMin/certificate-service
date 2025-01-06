@@ -1,13 +1,14 @@
 import { Body, Controller, ParseIntPipe, Post } from '@nestjs/common';
 import { CertificateService } from './certificate.service';
-import { TokenUserDto } from './dto/token-user.dto';
+import { UserInfoDto } from './dto/token-user.dto';
+import { userInfo } from 'os';
 
 @Controller('certificate')
 export class CertificateController {
     constructor(private readonly certificateService: CertificateService) {}
 
     @Post('token')
-    issueToken(@Body() tokenUserDto: TokenUserDto) {
-        return this.certificateService.issueToken(tokenUserDto);
+    issueToken(@Body() userInfo: UserInfoDto) {
+        return this.certificateService.issueToken(userInfo);
     }
 }

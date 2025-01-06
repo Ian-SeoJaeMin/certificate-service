@@ -10,7 +10,7 @@ import { jwtConfig } from '@src/core/config/jwt.config';
 export class UserTokenGeneratorService implements TokenGenerator<UserTokenModel, TokenResponseDto> {
     constructor(private readonly tokenProvidor: TokenProvider) {}
 
-    issueRefreshToken(userTokenModel: UserTokenModel): TokenResponseDto {
+    issueToken(userTokenModel: UserTokenModel): TokenResponseDto {
         return {
             accessToken: this.tokenProvidor.issueToken(userTokenModel, jwtConfig.user.accessTokenExpiresIn),
             refreshToken: this.tokenProvidor.issueToken(userTokenModel, jwtConfig.user.refreshTokenExpireIn)

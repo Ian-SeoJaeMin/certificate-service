@@ -10,5 +10,7 @@ export class TokenProvider {
         private readonly jwtService: JwtService
     ) {}
 
-    issueToken(tokenInfo: UserTokenModel, expireDuration: number | string) {}
+    issueToken(tokenInfo: UserTokenModel, expireDuration: number | string) {
+        return '';
+    }
 }
