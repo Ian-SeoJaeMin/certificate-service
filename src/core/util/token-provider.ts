@@ -24,7 +24,7 @@ export class TokenProvider {
                 ...tokenInfo
             },
             {
-                secret: this.configService.get<string>('TOKEN_SECRET'),
+                secret: this.configService.get<string>('TOKEN_SECRET')
                 // expiresIn
             }
         );
