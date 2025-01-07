@@ -6,7 +6,7 @@ import { Inject } from '@nestjs/common';
 import { UserType } from '@src/core/code/user-type';
 
 @Injectable()
-export class TokenService<T extends TokenModel, R extends TokenResponseDto> {
+export class TokenService<T extends TokenModel, R extends Promise<TokenResponseDto>> {
     private tokenGenerator: TokenGenerator<T, R>[];
 
     constructor(@Inject('TOKEN_GENERATORS') tokenGenerators: TokenGenerator<T, R>[]) {

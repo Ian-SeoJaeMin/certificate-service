@@ -8,8 +8,8 @@ import { TokenModule } from './token/token.module';
         ConfigModule.forRoot({
             isGlobal: true
         }),
-        CertificateModule,
-        TokenModule
+        CertificateModule
+        // TokenModule
     ],
     controllers: [],
     providers: []

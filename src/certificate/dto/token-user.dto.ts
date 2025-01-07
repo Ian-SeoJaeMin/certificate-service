@@ -1,4 +1,4 @@
-import { IsEnum, IsInt, IsNotEmpty } from '@modules/class-validator/types';
+import { IsEnum, IsInt, IsNotEmpty } from 'class-validator';
 import { UserType } from '@src/core/code/user-type';
 
 export class UserInfoDto {

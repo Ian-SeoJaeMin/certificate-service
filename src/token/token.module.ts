@@ -1,11 +1,14 @@
 import { Module } from '@modules/@nestjs/common';
 import { TokenService } from './token.service';
 import { UserTokenGeneratorService } from './user-token-generator.service';
+import { TokenProvider } from '@src/core/util/token-provider';
+import { JwtModule } from '@modules/@nestjs/jwt';
 
 @Module({
-    imports: [],
+    imports: [JwtModule.register({})],
     controllers: [],
     providers: [
+        TokenProvider,
         TokenService,
         UserTokenGeneratorService,
         {

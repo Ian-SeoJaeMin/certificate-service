@@ -5,15 +5,16 @@ import { TokenResponseDto } from '@src/certificate/dto/token-response.dto';
 import { UserType } from '@src/core/code/user-type';
 import { TokenProvider } from '@src/core/util/token-provider';
 import { jwtConfig } from '@src/core/config/jwt.config';
+import { TokenType } from '@src/core/code/token-type';
 
 @Injectable()
-export class UserTokenGeneratorService implements TokenGenerator<UserTokenModel, TokenResponseDto> {
+export class UserTokenGeneratorService implements TokenGenerator<UserTokenModel, Promise<TokenResponseDto>> {
     constructor(private readonly tokenProvidor: TokenProvider) {}
 
-    issueToken(userTokenModel: UserTokenModel): TokenResponseDto {
+    async issueToken(userTokenModel: UserTokenModel): Promise<TokenResponseDto> {
         return {
-            accessToken: this.tokenProvidor.issueToken(userTokenModel, jwtConfig.user.accessTokenExpiresIn),
-            refreshToken: this.tokenProvidor.issueToken(userTokenModel, jwtConfig.user.refreshTokenExpireIn)
+            accessToken: await this.tokenProvidor.issueToken(TokenType.ACCESS_TOKEN, userTokenModel, jwtConfig.user.accessTokenExpiresIn),
+            refreshToken: await this.tokenProvidor.issueToken(TokenType.REFRESH_TOKEN, userTokenModel, jwtConfig.user.refreshTokenExpireIn)
         };
     }
 

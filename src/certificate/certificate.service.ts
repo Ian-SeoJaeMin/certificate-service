@@ -7,7 +7,7 @@ import { UserType } from '@src/core/code/user-type';
 
 @Injectable()
 export class CertificateService {
-    constructor(private readonly userTokenService: TokenService<UserTokenModel, TokenResponseDto>) {}
+    constructor(private readonly userTokenService: TokenService<UserTokenModel, Promise<TokenResponseDto>>) {}
 
     issueToken(userInfo: UserInfoDto) {
         const { userType } = userInfo;
